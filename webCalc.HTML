@@ -38,14 +38,15 @@
 <br>
 <br>
   <h3>Percentage of a Value</h3>
-  <input> <label> is what % of</label> <input>
-  <button>Calculate</button>
+  <input id="percentageOf"> <label> is what % of</label> <input id="aValue">
+  <button id="PercentCalc">Calculate</button>
+  <span id="percentAns"></span>
 <br>
 <br>
   <h3>Value of a Percentage</h3>
-  <input> <label> % of</label> <input> <label>is</label>
-  <button>Calculate</button>
-
+  <input id="percent"> <label> % of</label> <input id="val"> <label>is</label>
+  <button id="valueCalc">Calculate</button>
+  <span id="valAns"></span>
   <br>
   <br>
   <h3> Compound Interest</h3>
@@ -166,6 +167,38 @@
     changeAns.appendChild(changeAnswer);
   }
   changeCalc.addEventListener("click", changeCalcClicked);
+  // percentage of a value
+var percentCalc = document.getElementById("PercentCalc");
+var percentAns = document.getElementById("percentAns");
+var percentAnswer = document.createElement("p");
+var percentCalcClicked = function() {
+  var aValInput = parseFloat(document.getElementById("aValue").value);
+  aValInput.type = "number";
+  var aValue = parseInt(aValInput);
+  var percentageOfInput = parseFloat(document.getElementById("percentageOf").value);
+  percentageOfInput.type = "number";
+  var percentOf = parseInt(percentageOfInput);
+  var percentageOf = (percentOf/aValue)*100;
+  percentAnswer.textContent = "Answer: " + percentageOf +"%";
+  percentAns.appendChild(percentAnswer);
+}
+percentCalc.addEventListener("click", percentCalcClicked);
+//value of a percentage
+var valueCalc = document.getElementById("valueCalc");
+var valAns = document.getElementById("valAns");
+var answerToVal = document.createElement("p");
+var valCalcClicked = function() {
+  var percent = parseFloat(document.getElementById("percent").value);
+  percent.type = "number";
+  var thePercent = parseInt(percent);
+  var theVal = parseFloat(document.getElementById("val").value);
+  theVal.type = "number";
+  someVal = parseInt(theVal);
+  var valAnswer = (percent*someVal)/100;
+answerToVal.textContent = "Answer: " + valAnswer;
+valAns.appendChild(answerToVal);
+}
+valueCalc.addEventListener("click", valCalcClicked);
   </script>
 </body>
 </html>
