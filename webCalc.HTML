@@ -16,22 +16,25 @@
     <option>-</option>
   </select>
   <input>
-  <button>Calculate</button>
+  <button id="DMAS";>Calculate</button>
 <br>
 <br>
   <h3> Square of</h3>
-  <input>
-  <button>Calculate</button>
+  <input id="squareNum">
+  <button id="squaresCalc">Calculate</button>
+  <span id="squareAns"></span>
 <br>
 <br>
   <h3> Cube of</h3>
-  <input>
-  <button>Calculate</button>
+  <input id="cubeNum">
+  <button id="cubeCalc">Calculate</button>
+  <span id="cubeAns"></span>
 <br>
 <br>
   <h3>Percentage Change</h3>
-  <label> From </label><input> <label>to</label> <input>
-  <button>Calculate</button>
+  <label> From </label><input id="initialVal"> <label>to</label> <input id="finalVal">
+  <button id="changeCalc">Calculate</button>
+  <span id="changeAns"></span>
 <br>
 <br>
   <h3>Percentage of a Value</h3>
@@ -113,10 +116,56 @@
 <br>
   <h3>Depreciation</h3>
   <label>Initial value:</label> <input>
-  <label>Appreciation rate (as a decimal):</label> <input>
+  <label>Depreciation rate (as a decimal):</label> <input>
   <label>Years:</label> <input>
   <button>Calculate final value</button>
   <script>
+    /*var DMAS = document.body.getElementById("DMAS");
+    var clickDMAS = function() {
+      var DMASanswer = document.body.createElement("p");
+    }*/
+    //calculating squares
+    var squareAns = document.getElementById("squareAns");
+    var squares = document.getElementById("squaresCalc");
+    var squareAnswer = document.createElement("p");
+    var squaresCalcClicked = function() {
+    var squareInput = parseFloat(document.getElementById("squareNum").value);
+    squareInput.type = "number";
+    var squareNum = parseInt(squareInput);
+    var squared = squareNum * squareNum
+    squareAnswer.textContent = "Answer: " + squared;
+    squareAns.appendChild(squareAnswer);
+    }
+    squares.addEventListener("click", squaresCalcClicked);
+    //calculating cubes
+    var cubeCalc = document.getElementById("cubeCalc");
+    var cubeAns = document.getElementById("cubeAns");
+    var cubeAnswer = document.createElement("p");
+    var cubeCalcClicked = function() {
+    var cubeInput = parseFloat(document.getElementById("cubeNum").value);
+    cubeInput.type = "number";
+    var cubeNum = parseInt(cubeInput);
+    var cubed = cubeNum * cubeNum * cubeNum
+    cubeAnswer.textContent = "Answer: " + cubed;
+    cubeAns.appendChild(cubeAnswer);
+  }
+  cubeCalc.addEventListener("click", cubeCalcClicked);
+  //calculating percentage change
+  var changeCalc = document.getElementById("changeCalc");
+  var changeAns = document.getElementById("changeAns");
+  var changeAnswer = document.createElement("p");
+  var changeCalcClicked = function() {
+    var initialValInput = parseFloat(document.getElementById("initialVal").value);
+    initialValInput.type = "number";
+    var initialVal = parseInt(initialValInput);
+    var finalValInput = parseFloat(document.getElementById("finalVal").value);
+    finalValInput.type = "number";
+    var finalVal = parseInt(finalValInput);
+    var percentChange = ((finalVal-initialVal)/initialVal) * 100;
+    changeAnswer.textContent = "Answer: " + percentChange + "%";
+    changeAns.appendChild(changeAnswer);
+  }
+  changeCalc.addEventListener("click", changeCalcClicked);
   </script>
 </body>
 </html>
