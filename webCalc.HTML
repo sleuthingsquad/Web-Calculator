@@ -109,10 +109,13 @@
 <br>
 <br>
   <h3>Appreciation</h3>
-  <label>Initial value:</label> <input>
-  <label>Appreciation rate (as a decimal):</label> <input>
-  <label>Years:</label> <input>
-  <button>Calculate final value</button>
+  <label>Initial value:</label> <input id="appreciateInitialVal">
+  <label>Appreciation rate (as a decimal):</label> <input id="appreciateRate">
+  <label>Years:</label> <input id="appreciateTime">
+  <button id="appreciateCalcVal">Calculate final value</button>
+  <span id="appreciateValAns"></span>
+  <button id="appreciateCalcProfit">Calculate profit</button>
+  <span id="appreciateProfitAns"></span>
 <br>
 <br>
   <h3>Depreciation</h3>
@@ -199,6 +202,33 @@ answerToVal.textContent = "Answer: " + valAnswer;
 valAns.appendChild(answerToVal);
 }
 valueCalc.addEventListener("click", valCalcClicked);
+//appreciation
+// final value
+var appreciateCalcVal = document.getElementById("appreciateCalcVal");
+var appreciateValAns = document.getElementById("appreciateValAns");
+var appreciateValAnswer = document.createElement("p");
+var appreciateValCalcClicked = function() {
+  var appreciateInitialValInput = parseFloat(document.getElementById("appreciateInitialVal").value);
+appreciateInitialValInput.type = "number";
+var appreciateInitialVal = parseInt(appreciateInitialValInput);
+var appreciateRateIn = parseFloat(document.getElementById("appreciateRate").value);
+appreciateRateIn.type = "number";
+var appreciateRate = parseInt(appreciateRateIn);
+var appreciateTimeIn = parseFloat(document.getElementById("appreciateTime").value);
+appreciateTimeIn.type = "number";
+var appreciateTime = parseInt(appreciateTimeIn);
+console.log(appreciateRate);
+var powRate = appreciateRate + 1;
+console.log(powRate);
+var powVar = Math.pow(powRate, appreciateTime);
+console.log(powVar);
+var appreciateResult = powVar * appreciateInitialVal;
+appreciateValAnswer.textContent = "Answer: " + appreciateResult;
+appreciateValAns.appendChild(appreciateValAnswer); 
+}
+appreciateCalcVal.addEventListener("click", appreciateValCalcClicked);
+
+//profit
   </script>
 </body>
 </html>
