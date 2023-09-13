@@ -110,7 +110,7 @@
 <br>
   <h3>Appreciation</h3>
   <label>Initial value:</label> <input id="appreciateInitialVal">
-  <label>Appreciation rate (as a decimal):</label> <input id="appreciateRate">
+  <label>Appreciation rate (as a percentage):</label> <input id="appreciateRate">
   <label>Years:</label> <input id="appreciateTime">
   <button id="appreciateCalcVal">Calculate final value</button>
   <span id="appreciateValAns"></span>
@@ -207,28 +207,41 @@ valueCalc.addEventListener("click", valCalcClicked);
 var appreciateCalcVal = document.getElementById("appreciateCalcVal");
 var appreciateValAns = document.getElementById("appreciateValAns");
 var appreciateValAnswer = document.createElement("p");
-var appreciateValCalcClicked = function() {
-  var appreciateInitialValInput = parseFloat(document.getElementById("appreciateInitialVal").value);
+
+var appreciateInitialValInput = parseFloat(document.getElementById("appreciateInitialVal").value);
 appreciateInitialValInput.type = "number";
 var appreciateInitialVal = parseInt(appreciateInitialValInput);
-var appreciateRateIn = parseFloat(document.getElementById("appreciateRate").value);
-appreciateRateIn.type = "number";
-var appreciateRate = parseInt(appreciateRateIn);
+var appreciateRateInput = parseFloat(document.getElementById("appreciateRate").value);
+appreciateRateInput.type = "number";
+appreciateRateInput.step = "0.5";
+var appreciateRatePerc = parseInt(appreciateRateInput);
+var appreciateRate = appreciateRatePerc/100;
 var appreciateTimeIn = parseFloat(document.getElementById("appreciateTime").value);
 appreciateTimeIn.type = "number";
 var appreciateTime = parseInt(appreciateTimeIn);
-console.log(appreciateRate);
+console.log("appreciateRate:"+appreciateRate);
 var powRate = appreciateRate + 1;
-console.log(powRate);
+//console.log("powRate:"+powRate);
 var powVar = Math.pow(powRate, appreciateTime);
-console.log(powVar);
+//console.log("powVar:"+powVar);
 var appreciateResult = powVar * appreciateInitialVal;
-appreciateValAnswer.textContent = "Answer: " + appreciateResult;
+
+var appreciateValCalcClicked = function() {
+appreciateValAnswer.textContent = "Answer: " + appreciateResult.toFixed(2);;
 appreciateValAns.appendChild(appreciateValAnswer); 
 }
 appreciateCalcVal.addEventListener("click", appreciateValCalcClicked);
 
 //profit
+var appreciateCalcProfit = document.getElementById("appreciateCalcProfit");
+var appreciateProfitAns = document.getElementById("appreciateProfitAns");
+var appreciateProfitAnswer = document.createElement("p");
+var appreciateProfitCalcClicked = function() {
+var appreciateProfit = appreciateResult-appreciateInitialVal 
+appreciateProfitAnswer.textContent = "Answer: " + appreciateProfit;
+appreciateProfitAns.appendChild(appreciateProfitAnswer);
+}
+appreciateCalcProfit.addEventListener("click", appreciateProfitCalcClicked);
   </script>
 </body>
 </html>
