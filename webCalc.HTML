@@ -119,10 +119,12 @@
 <br>
 <br>
   <h3>Depreciation</h3>
-  <label>Initial value:</label> <input>
-  <label>Depreciation rate (as a decimal):</label> <input>
-  <label>Years:</label> <input>
-  <button>Calculate final value</button>
+  <label id="depreciateInitialVal">Initial value:</label> <input>
+  <label id="depreciateRate">Depreciation rate (as a percentage):</label> <input>
+  <label id="depreciateTime">Years:</label> <input>
+  <button id="depreciateCalcVal">Calculate final value</button>
+  <span id="depreciateValAns"></span>
+  <button>Calculate profit</button>
   <script>
     /*var DMAS = document.body.getElementById("DMAS");
     var clickDMAS = function() {
@@ -260,6 +262,18 @@ appreciateProfitAnswer.textContent = "Answer: " + appreciateProfit.toFixed(2);
 appreciateProfitAns.appendChild(appreciateProfitAnswer);
 }
 appreciateCalcProfit.addEventListener("click", appreciateProfitCalcClicked);
+
+//depreciation
+//final value
+var depreciateCalcVal = document.getElementById("depreciateCalcVal");
+var depreciateValAns = document.getElementById("depreciateValAns");
+var depreciateValAnswer = document.createElement("p");
+var depreciateValCalcClicked = function() {
+var depreciateInitialValIn = parseFloat(document.getElementById("depreciateInitialVal").value);
+depreciateInitialValIn.type = "number";  
+var depreciateInitialVal = parseInt(depreciateInitialValIn);
+}
+//profit
   </script>
 </body>
 </html>
