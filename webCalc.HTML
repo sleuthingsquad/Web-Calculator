@@ -48,36 +48,6 @@
   <button id="valueCalc">Calculate</button>
   <span id="valAns"></span>
   <br>
-  <br>
-  <h3> Compound Interest</h3>
-  <h4> Amount & Profit</h2>
-  <label>Initial principal:</label> <input>
-  <label> Rate in percentage:</label> <input>
-  <label> Time periods:</label> <input>
-  <button>Calculate final amount</button>
-  <button>Calculate profit</button>
-  <br>
-  <br>
-  <h4> Initial Principal</h2>
-  <label> Rate in percentage:</label> <input>
-  <label> Time periods:</label> <input>
-  <label>Amount:</label><input>
-  <button>Calculate initial principal</button>
-  <br>
-  <br>
-  <h4>Rate</h4>
-  <label>Amount:</label><input>
-  <label>Initial principal:</label> <input>
-  <label> Time periods:</label> <input>
-  <button>Calculate rate(in %)</button>
-  <br>
-  <br>
-  <h4>Time periods</h4>
-  <label>Amount:</label><input>
-  <label>Initial principal:</label> <input>
-  <label> Rate in percentage:</label> <input>
-  <button>Calculate time periods</button>
-<br>
 <br>
   <h3> Simple Interest</h3>
   <h4> Amount and Profit</h4>
@@ -108,7 +78,7 @@
   <button>Calculate</button>
 <br>
 <br>
-  <h3>Appreciation</h3>
+  <h3>Appreciation/Compound Interest</h3>
   <label>Initial value:</label> <input id="appreciateInitialVal">
   <label>Appreciation rate (as a percentage):</label> <input id="appreciateRate">
   <label>Years:</label> <input id="appreciateTime">
@@ -204,6 +174,9 @@ answerToVal.textContent = "Answer: " + valAnswer;
 valAns.appendChild(answerToVal);
 }
 valueCalc.addEventListener("click", valCalcClicked);
+
+//simple interest
+
 //appreciation
 // final value
 var appreciateCalcVal = document.getElementById("appreciateCalcVal");
@@ -270,9 +243,27 @@ var depreciateValAns = document.getElementById("depreciateValAns");
 var depreciateValAnswer = document.createElement("p");
 var depreciateValCalcClicked = function() {
 var depreciateInitialValIn = parseFloat(document.getElementById("depreciateInitialVal").value);
-depreciateInitialValIn.type = "number";  
+depreciateInitialValIn.type = "number";
 var depreciateInitialVal = parseInt(depreciateInitialValIn);
+console.log("depreciateInitialVal: " + depreciateInitialVal);
+var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
+depreciateRateIn.type = "number";
+var depreciateRatePerc = parseInt(depreciateRateIn);
+var depreciateRate = depreciateRatePerc/100
+var depreciateRateMinus = 1-depreciateRate
+console.log("depreciateRateMinus: " + depreciateRateMinus);
+var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
+depreciateTimeIn.type = "number";
+var depreciateTime = parseInt(depreciateTimeIn);
+console.log("depreciateTime: " + depreciateTime);
+var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
+console.log("depreciationPow: " + depreciationPow);
+var depreciationVal = depreciationPow * depreciateInitialVal
+depreciateValAnswer.textContent = "Answer: " + depreciationVal;
+depreciateValAns.appendChild(depreciateValAnswer);
+
 }
+depreciateCalcVal.addEventListener("click", depreciateValCalcClicked);
 //profit
   </script>
 </body>
