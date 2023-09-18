@@ -51,10 +51,11 @@
 <br>
   <h3> Simple Interest</h3>
   <h4> Amount and Profit</h4>
-  <label>Initial principal:</label> <input>
-  <labelp>Rate:</label> <input>
-  <label>Time:</label> <input>
-  <button>Calculate</button>
+  <label>Initial principal:</label> <input id="SIInitialVal">
+  <labelp>Rate:</label> <input id="SIRate">
+  <label>Time:</label> <input id="SITime">
+  <button id="SIValCalc">Calculate</button>
+  <span id="SIValAns"></span>
   <br>
   <br>
   <h4> Initial principal</h4>
@@ -176,7 +177,25 @@ valAns.appendChild(answerToVal);
 valueCalc.addEventListener("click", valCalcClicked);
 
 //simple interest
-
+var SIValCalc = document.getElementById("SIValCalc");
+var SIValAns = document.getElementById("SIValAns");
+var SIVAlAnswer = document.createElement("p");
+var SIVAlCalcClicked = function() {
+  var SIInitialValIn = parseFloat(document.getElementById("SIInitialVal").value);
+  SIInitialValIn.type = "number";
+  var SIInitialVal = parseInt(SIInitialVal);
+  var SIRateIn = parseFloat(document.getElementById("SIRate").value);
+  SIRateIn.type = "number";
+  var SIRate = parseInt(SIRateIn);
+  var SITimeIn = parseFloat(document.getElementById("SITime").value);
+  SITimeIn.type = "number";
+  var SITime = parseInt(SITimeIn);
+  var SIProfit = (SIRate * SITime * SIInitialVal)/100;
+  var SITotal = SIProfit + SIInitialVal;
+  SIVAlAnswer.textContent = "Answer: " + SITotal;
+  SIValAns.appendChild(SIVAlAnswer);
+};
+SIValCalc.addEventListener("click", SIVAlCalcClicked);
 //appreciation
 // final value
 var appreciateCalcVal = document.getElementById("appreciateCalcVal");
