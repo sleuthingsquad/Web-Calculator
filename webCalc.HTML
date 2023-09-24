@@ -112,6 +112,12 @@
     var squared = squareNum * squareNum
     squareAnswer.textContent = "Answer: " + squared;
     squareAns.appendChild(squareAnswer);
+    var squareHead = document.createElement("h4");
+    squareHead.textContent = "How we got this: "
+    squareAnswer.appendChild(squareHead);
+    var squareExplain = document.createElement("p");
+    squareExplain.textContent = "The square of a number is that number multiplied by itself. So here, the square of " + squareNum + " is = " + squareNum + " X  " + squareNum + " which is " + squared;
+    squareHead.appendChild(squareExplain);
     }
     squares.addEventListener("click", squaresCalcClicked);
     //calculating cubes
@@ -125,6 +131,12 @@
     var cubed = cubeNum * cubeNum * cubeNum
     cubeAnswer.textContent = "Answer: " + cubed;
     cubeAns.appendChild(cubeAnswer);
+    var cubeHead = document.createElement("h4");
+    cubeHead.textContent = "How we got this: ";
+    cubeAnswer.appendChild(cubeHead);
+    var cubeExplain = document.createElement("p");
+    cubeExplain.textContent = "The cube of a number is the number multiplied by itself thrice. So the cube of " + cubeNum + "is = " + cubeNum + " X " + cubeNum + " X " + cubeNum + " which is " + cubed;
+    cubeHead.appendChild(cubeExplain);
   }
   cubeCalc.addEventListener("click", cubeCalcClicked);
   //calculating percentage change
@@ -141,6 +153,12 @@
     var percentChange = ((finalVal-initialVal)/initialVal) * 100;
     changeAnswer.textContent = "Answer: " + percentChange + "%";
     changeAns.appendChild(changeAnswer);
+    var changeHead = document.createElement("h4");
+    changeHead.textContent = "How we got this: ";
+    changeAnswer.appendChild(changeHead);
+    var changeExplain = document.createElement("p");
+    changeExplain.textContent = "Percentage change is calculated by subtracting the initial value from the final value, and then dividing that by the initial value and multiplying that by 100. Here you would do (" + finalVal + "-" + initialVal + ")/" + initialVal + " X 100";
+    changeHead.appendChild(changeExplain);
   }
   changeCalc.addEventListener("click", changeCalcClicked);
   // percentage of a value
@@ -157,6 +175,12 @@ var percentCalcClicked = function() {
   var percentageOf = (percentOf/aValue)*100;
   percentAnswer.textContent = "Answer: " + percentageOf +"%";
   percentAns.appendChild(percentAnswer);
+  var percentHead = document.createElement("h4");
+  percentHead.textContent = "How we got this:";
+  percentAnswer.appendChild(percentHead);
+  var percentExplain = document.createElement("p");
+  percentExplain.textContent = "We calculate this by dividing the number you want to represent as a percentage by the number it is a percentage of. Then, we would miltiply it by 100. Here, we would do (" + percentOf + "/" + aValue + ") X 100";
+  percentHead.appendChild(percentExplain);
 }
 percentCalc.addEventListener("click", percentCalcClicked);
 //value of a percentage
@@ -173,6 +197,12 @@ var valCalcClicked = function() {
   var valAnswer = (percent*someVal)/100;
 answerToVal.textContent = "Answer: " + valAnswer;
 valAns.appendChild(answerToVal);
+var valueHead = document.createElement("h4");
+valueHead.textContent = "How we got this:";
+answerToVal.appendChild(valueHead);
+var valueExplain = document.createElement("h4");
+valueExplain.textContent = "We calculate this by multiplying the percentage by the value you want to find the percentage of. Then, we divide it by 100. Here we would do " + percent + "X" + someVal + "/100";
+valueHead.appendChild(valueExplain);
 }
 valueCalc.addEventListener("click", valCalcClicked);
 
@@ -192,7 +222,7 @@ var SIVAlCalcClicked = function() {
   var SITime = parseInt(SITimeIn);
   var SIProfit = (SIRate * SITime * SIInitialVal)/100;
   var SITotal = SIProfit + SIInitialVal;
-  SIVAlAnswer.textContent = "Answer: " + SITotal;
+  SIVAlAnswer.textContent = "Answer: " + SITotal.toFixed(2);
   SIValAns.appendChild(SIVAlAnswer);
 };
 SIValCalc.addEventListener("click", SIVAlCalcClicked);
@@ -278,7 +308,7 @@ console.log("depreciateTime: " + depreciateTime);
 var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
 console.log("depreciationPow: " + depreciationPow);
 var depreciationVal = depreciationPow * depreciateInitialVal
-depreciateValAnswer.textContent = "Answer: " + depreciationVal;
+depreciateValAnswer.textContent = "Answer: " + depreciationVal.toFixed(2);
 depreciateValAns.appendChild(depreciateValAnswer);
 
 }
