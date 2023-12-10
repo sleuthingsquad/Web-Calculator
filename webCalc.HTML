@@ -9,14 +9,15 @@
   <h1> Web Calculator</h1>
   
   <h3>Division, Multiplication, Adition and Subtraction</h3>
-  <input> <select>
-    <option>/</option>
-    <option>*</option>
-    <option>+</option>
-    <option>-</option>
+  <input id = "number1"> <select id = "operator">
+    <option value = "/">/</option>
+    <option value = "*">*</option>
+    <option value = "+">+</option>
+    <option value = "-">-</option>
   </select>
-  <input>
+  <input id = "number2">
   <button id="DMAS";>Calculate</button>
+  <span id = "DMASans"></span>
 <br>
 <br>
   <h3> Square of</h3>
@@ -97,27 +98,47 @@
   <span id="depreciateValAns"></span>
   <button>Calculate profit</button>
   <script>
-    /*var DMAS = document.body.getElementById("DMAS");
+
+    var DMAScalc = document.getElementById("DMAS");
+    var dmasANS = document.getElementById("DMASans")
+    var DMASanswer = document.createElement("p");
     var clickDMAS = function() {
-      var DMASanswer = document.body.createElement("p");
-    }*/
+      var num1 = parseFloat(document.getElementById("number1").value);
+      var num2 = parseFloat(document.getElementById("number2").value);
+      var operator = document.getElementById("operator").value
+     
+      if (operator === "/") {
+        DMASanswer = num1 / num2
+      }
+      else if (operator === "*"){
+        DMASanswer = num1 * num2
+      }
+      else if (operator === "+") {
+        DMASanswer = num1 + num2
+      }
+      else {
+        DMASanswer = num1 - num2
+      }
+      dmasANS.appendChild(DMASanswer)
+    }
+  DMAScalc.addEventListener("click", clickDMAS)
     //calculating squares
     var squareAns = document.getElementById("squareAns");
     var squares = document.getElementById("squaresCalc");
     var squareAnswer = document.createElement("p");
     var squaresCalcClicked = function() {
-    var squareInput = parseFloat(document.getElementById("squareNum").value);
-    squareInput.type = "number";
-    var squareNum = parseInt(squareInput);
-    var squared = squareNum * squareNum
-    squareAnswer.textContent = "Answer: " + squared;
-    squareAns.appendChild(squareAnswer);
-    var squareHead = document.createElement("h4");
-    squareHead.textContent = "How we got this: "
-    squareAnswer.appendChild(squareHead);
-    var squareExplain = document.createElement("p");
-    squareExplain.textContent = "The square of a number is that number multiplied by itself. So here, the square of " + squareNum + " is = " + squareNum + " X  " + squareNum + " which is " + squared;
-    squareHead.appendChild(squareExplain);
+      var squareInput = parseFloat(document.getElementById("squareNum").value);
+      squareInput.type = "number";
+      var squareNum = parseInt(squareInput);
+      var squared = squareNum * squareNum
+      squareAnswer.textContent = "Answer: " + squared;
+      squareAns.appendChild(squareAnswer);
+      var squareHead = document.createElement("h4");
+      squareHead.textContent = "How we got this: "
+      squareAnswer.appendChild(squareHead);
+      var squareExplain = document.createElement("p");
+      squareExplain.textContent = "The square of a number is that number multiplied by itself. So here, the square of " + squareNum + " is = " + squareNum + " X  " + squareNum + " which is " + squared;
+      squareHead.appendChild(squareExplain);
     }
     squares.addEventListener("click", squaresCalcClicked);
     //calculating cubes
@@ -125,194 +146,212 @@
     var cubeAns = document.getElementById("cubeAns");
     var cubeAnswer = document.createElement("p");
     var cubeCalcClicked = function() {
-    var cubeInput = parseFloat(document.getElementById("cubeNum").value);
-    cubeInput.type = "number";
-    var cubeNum = parseInt(cubeInput);
-    var cubed = cubeNum * cubeNum * cubeNum
-    cubeAnswer.textContent = "Answer: " + cubed;
-    cubeAns.appendChild(cubeAnswer);
-    var cubeHead = document.createElement("h4");
-    cubeHead.textContent = "How we got this: ";
-    cubeAnswer.appendChild(cubeHead);
-    var cubeExplain = document.createElement("p");
-    cubeExplain.textContent = "The cube of a number is the number multiplied by itself thrice. So the cube of " + cubeNum + "is = " + cubeNum + " X " + cubeNum + " X " + cubeNum + " which is " + cubed;
-    cubeHead.appendChild(cubeExplain);
+      var cubeInput = parseFloat(document.getElementById("cubeNum").value);
+      cubeInput.type = "number";
+      var cubeNum = parseInt(cubeInput);
+      var cubed = cubeNum * cubeNum * cubeNum
+      cubeAnswer.textContent = "Answer: " + cubed;
+      cubeAns.appendChild(cubeAnswer);
+      var cubeHead = document.createElement("h4");
+      cubeHead.textContent = "How we got this: ";
+      cubeAnswer.appendChild(cubeHead);
+      var cubeExplain = document.createElement("p");
+      cubeExplain.textContent = "The cube of a number is the number multiplied by itself thrice. So the cube of " + cubeNum + "is = " + cubeNum + " X " + cubeNum + " X " + cubeNum + " which is " + cubed;
+      cubeHead.appendChild(cubeExplain);
   }
-  cubeCalc.addEventListener("click", cubeCalcClicked);
-  //calculating percentage change
-  var changeCalc = document.getElementById("changeCalc");
-  var changeAns = document.getElementById("changeAns");
-  var changeAnswer = document.createElement("p");
-  var changeCalcClicked = function() {
-    var initialValInput = parseFloat(document.getElementById("initialVal").value);
-    initialValInput.type = "number";
-    var initialVal = parseInt(initialValInput);
-    var finalValInput = parseFloat(document.getElementById("finalVal").value);
-    finalValInput.type = "number";
-    var finalVal = parseInt(finalValInput);
-    var percentChange = ((finalVal-initialVal)/initialVal) * 100;
-    changeAnswer.textContent = "Answer: " + percentChange + "%";
-    changeAns.appendChild(changeAnswer);
-    var changeHead = document.createElement("h4");
-    changeHead.textContent = "How we got this: ";
-    changeAnswer.appendChild(changeHead);
-    var changeExplain = document.createElement("p");
-    changeExplain.textContent = "Percentage change is calculated by subtracting the initial value from the final value, and then dividing that by the initial value and multiplying that by 100. Here you would do (" + finalVal + "-" + initialVal + ")/" + initialVal + " X 100";
-    changeHead.appendChild(changeExplain);
-  }
-  changeCalc.addEventListener("click", changeCalcClicked);
-  // percentage of a value
-var percentCalc = document.getElementById("PercentCalc");
-var percentAns = document.getElementById("percentAns");
-var percentAnswer = document.createElement("p");
-var percentCalcClicked = function() {
-  var aValInput = parseFloat(document.getElementById("aValue").value);
-  aValInput.type = "number";
-  var aValue = parseInt(aValInput);
-  var percentageOfInput = parseFloat(document.getElementById("percentageOf").value);
-  percentageOfInput.type = "number";
-  var percentOf = parseInt(percentageOfInput);
-  var percentageOf = (percentOf/aValue)*100;
-  percentAnswer.textContent = "Answer: " + percentageOf +"%";
-  percentAns.appendChild(percentAnswer);
-  var percentHead = document.createElement("h4");
-  percentHead.textContent = "How we got this:";
-  percentAnswer.appendChild(percentHead);
-  var percentExplain = document.createElement("p");
-  percentExplain.textContent = "We calculate this by dividing the number you want to represent as a percentage by the number it is a percentage of. Then, we would miltiply it by 100. Here, we would do (" + percentOf + "/" + aValue + ") X 100";
-  percentHead.appendChild(percentExplain);
-}
-percentCalc.addEventListener("click", percentCalcClicked);
-//value of a percentage
-var valueCalc = document.getElementById("valueCalc");
-var valAns = document.getElementById("valAns");
-var answerToVal = document.createElement("p");
-var valCalcClicked = function() {
-  var percent = parseFloat(document.getElementById("percent").value);
-  percent.type = "number";
-  var thePercent = parseInt(percent);
-  var theVal = parseFloat(document.getElementById("val").value);
-  theVal.type = "number";
-  someVal = parseInt(theVal);
-  var valAnswer = (percent*someVal)/100;
-answerToVal.textContent = "Answer: " + valAnswer;
-valAns.appendChild(answerToVal);
-var valueHead = document.createElement("h4");
-valueHead.textContent = "How we got this:";
-answerToVal.appendChild(valueHead);
-var valueExplain = document.createElement("h4");
-valueExplain.textContent = "We calculate this by multiplying the percentage by the value you want to find the percentage of. Then, we divide it by 100. Here we would do " + percent + "X" + someVal + "/100";
-valueHead.appendChild(valueExplain);
-}
-valueCalc.addEventListener("click", valCalcClicked);
+    cubeCalc.addEventListener("click", cubeCalcClicked);
+    //calculating percentage change
+    var changeCalc = document.getElementById("changeCalc");
+    var changeAns = document.getElementById("changeAns");
+    var changeAnswer = document.createElement("p");
+    var changeCalcClicked = function() {
+      var initialValInput = parseFloat(document.getElementById("initialVal").value);
+      initialValInput.type = "number";
+      var initialVal = parseInt(initialValInput);
+      var finalValInput = parseFloat(document.getElementById("finalVal").value);
+      finalValInput.type = "number";
+      var finalVal = parseInt(finalValInput);
+      var percentChange = ((finalVal-initialVal)/initialVal) * 100;
+      changeAnswer.textContent = "Answer: " + percentChange + "%";
+      changeAns.appendChild(changeAnswer);
+      var changeHead = document.createElement("h4");
+      changeHead.textContent = "How we got this: ";
+      changeAnswer.appendChild(changeHead);
+      var changeExplain = document.createElement("p");
+      changeExplain.textContent = "Percentage change is calculated by subtracting the initial value from the final value, and then dividing that by the initial value and multiplying that by 100. Here you would do (" + finalVal + "-" + initialVal + ")/" + initialVal + " X 100";
+      changeHead.appendChild(changeExplain);
+    }
+    changeCalc.addEventListener("click", changeCalcClicked);
+    // percentage of a value
+    var percentCalc = document.getElementById("PercentCalc");
+    var percentAns = document.getElementById("percentAns");
+    var percentAnswer = document.createElement("p");
+    var percentCalcClicked = function() {
+      var aValInput = parseFloat(document.getElementById("aValue").value);
+      aValInput.type = "number";
+      var aValue = parseInt(aValInput);
+      var percentageOfInput = parseFloat(document.getElementById("percentageOf").value);
+      percentageOfInput.type = "number";
+      var percentOf = parseInt(percentageOfInput);
+      var percentageOf = (percentOf/aValue)*100;
+      percentAnswer.textContent = "Answer: " + percentageOf +"%";
+      percentAns.appendChild(percentAnswer);
+      var percentHead = document.createElement("h4");
+      percentHead.textContent = "How we got this:";
+      percentAnswer.appendChild(percentHead);
+      var percentExplain = document.createElement("p");
+      percentExplain.textContent = "We calculate this by dividing the number you want to represent as a percentage by the number it is a percentage of. Then, we would miltiply it by 100. Here, we would do (" + percentOf + "/" + aValue + ") X 100";
+      percentHead.appendChild(percentExplain);
+    }
+    percentCalc.addEventListener("click", percentCalcClicked);
+    //value of a percentage
+    var valueCalc = document.getElementById("valueCalc");
+    var valAns = document.getElementById("valAns");
+    var answerToVal = document.createElement("p");
+    var valCalcClicked = function() {
+      var percent = parseFloat(document.getElementById("percent").value);
+      percent.type = "number";
+      var thePercent = parseInt(percent);
+      var theVal = parseFloat(document.getElementById("val").value);
+      theVal.type = "number";
+      someVal = parseInt(theVal);
+      var valAnswer = (percent*someVal)/100;
+      answerToVal.textContent = "Answer: " + valAnswer;
+      valAns.appendChild(answerToVal);
+      var valueHead = document.createElement("h4");
+      valueHead.textContent = "How we got this:";
+      answerToVal.appendChild(valueHead);
+      var valueExplain = document.createElement("h4");
+      valueExplain.textContent = "We calculate this by multiplying the percentage by the value you want to find the percentage of. Then, we divide it by 100. Here we would do " + percent + "X" + someVal + "/100";
+      valueHead.appendChild(valueExplain);
+    }
+    valueCalc.addEventListener("click", valCalcClicked);
 
-//simple interest
-var SIValCalc = document.getElementById("SIValCalc");
-var SIValAns = document.getElementById("SIValAns");
-var SIVAlAnswer = document.createElement("p");
-var SIVAlCalcClicked = function() {
-  var SIInitialValIn = parseFloat(document.getElementById("SIInitialVal").value);
-  SIInitialValIn.type = "number";
-  var SIInitialVal = parseInt(SIInitialVal);
-  var SIRateIn = parseFloat(document.getElementById("SIRate").value);
-  SIRateIn.type = "number";
-  var SIRate = parseInt(SIRateIn);
-  var SITimeIn = parseFloat(document.getElementById("SITime").value);
-  SITimeIn.type = "number";
-  var SITime = parseInt(SITimeIn);
-  var SIProfit = (SIRate * SITime * SIInitialVal)/100;
-  var SITotal = SIProfit + SIInitialVal;
-  SIVAlAnswer.textContent = "Answer: " + SITotal.toFixed(2);
-  SIValAns.appendChild(SIVAlAnswer);
-};
-SIValCalc.addEventListener("click", SIVAlCalcClicked);
-//appreciation
-// final value
-var appreciateCalcVal = document.getElementById("appreciateCalcVal");
-var appreciateValAns = document.getElementById("appreciateValAns");
-var appreciateValAnswer = document.createElement("p");
+    //simple interest
+    var SIValCalc = document.getElementById("SIValCalc");
+    var SIValAns = document.getElementById("SIValAns");
+    var SIVAlAnswer = document.createElement("p");
+    var SIVAlCalcClicked = function() {
+      var SIInitialValIn = parseFloat(document.getElementById("SIInitialVal").value);
+      SIInitialValIn.type = "number";
+      var SIInitialVal = parseInt(SIInitialVal);
+      var SIRateIn = parseFloat(document.getElementById("SIRate").value);
+      SIRateIn.type = "number";
+      var SIRate = parseInt(SIRateIn);
+      var SITimeIn = parseFloat(document.getElementById("SITime").value);
+      SITimeIn.type = "number";
+      var SITime = parseInt(SITimeIn);
+      var SIProfit = (SIRate * SITime * SIInitialVal)/100;
+      var SITotal = SIProfit + SIInitialVal;
+      SIVAlAnswer.textContent = "Answer: " + SITotal.toFixed(2);
+      SIValAns.appendChild(SIVAlAnswer);
+    };
+    SIValCalc.addEventListener("click", SIVAlCalcClicked);
+    //appreciation
+    // final value
+    var appreciateCalcVal = document.getElementById("appreciateCalcVal");
+    var appreciateValAns = document.getElementById("appreciateValAns");
+    var appreciateValAnswer = document.createElement("p");
 
-var appreciateValCalcClicked = function() {
-  var appreciateInitialValInput = parseFloat(document.getElementById("appreciateInitialVal").value);
-appreciateInitialValInput.type = "number";
-var appreciateInitialVal = parseInt(appreciateInitialValInput);
-var appreciateRateInput = parseFloat(document.getElementById("appreciateRate").value);
-appreciateRateInput.type = "number";
-appreciateRateInput.step = "0.5";
-var appreciateRatePerc = parseInt(appreciateRateInput);
-var appreciateRate = appreciateRatePerc/100;
-var appreciateTimeIn = parseFloat(document.getElementById("appreciateTime").value);
-appreciateTimeIn.type = "number";
-var appreciateTime = parseInt(appreciateTimeIn);
-console.log("appreciateRate:"+appreciateRate);
-var powRate = appreciateRate + 1;
-//console.log("powRate:"+powRate);
-var powVar = Math.pow(powRate, appreciateTime);
-//console.log("powVar:"+powVar);
-var appreciateResult = powVar * appreciateInitialVal;
-appreciateValAnswer.textContent = "Answer: " + appreciateResult.toFixed(2);;
-appreciateValAns.appendChild(appreciateValAnswer); 
-}
-appreciateCalcVal.addEventListener("click", appreciateValCalcClicked);
+    var appreciateValCalcClicked = function() {
+      var appreciateInitialValInput = parseFloat(document.getElementById("appreciateInitialVal").value);
+      appreciateInitialValInput.type = "number";
+      var appreciateInitialVal = parseInt(appreciateInitialValInput);
+      var appreciateRateInput = parseFloat(document.getElementById("appreciateRate").value);
+      appreciateRateInput.type = "number";
+      appreciateRateInput.step = "0.5";
+      var appreciateRatePerc = parseInt(appreciateRateInput);
+      var appreciateRate = appreciateRatePerc/100;
+      var appreciateTimeIn = parseFloat(document.getElementById("appreciateTime").value);
+      appreciateTimeIn.type = "number";
+      var appreciateTime = parseInt(appreciateTimeIn);
+      console.log("appreciateRate:"+appreciateRate);
+      var powRate = appreciateRate + 1;
+      //console.log("powRate:"+powRate);
+      var powVar = Math.pow(powRate, appreciateTime);
+      //console.log("powVar:"+powVar);
+      var appreciateResult = powVar * appreciateInitialVal;
+      appreciateValAnswer.textContent = "Answer: " + appreciateResult.toFixed(2);;
+      appreciateValAns.appendChild(appreciateValAnswer); 
+    }
+    appreciateCalcVal.addEventListener("click", appreciateValCalcClicked);
 
-//profit
-var appreciateCalcProfit = document.getElementById("appreciateCalcProfit");
-var appreciateProfitAns = document.getElementById("appreciateProfitAns");
-var appreciateProfitAnswer = document.createElement("p");
-var appreciateProfitCalcClicked = function() {
+    //profit
+    var appreciateCalcProfit = document.getElementById("appreciateCalcProfit");
+    var appreciateProfitAns = document.getElementById("appreciateProfitAns");
+    var appreciateProfitAnswer = document.createElement("p");
+    var appreciateProfitCalcClicked = function() {
+      var appreciateInitialValInput2 = parseFloat(document.getElementById("appreciateInitialVal").value);
+      appreciateInitialValInput2.type = "number";
+      var appreciateInitialVal2 = parseInt(appreciateInitialValInput2);
+      var appreciateRateInput2 = parseFloat(document.getElementById("appreciateRate").value);
+      appreciateRateInput2.type = "number";
+      appreciateRateInput2.step = "0.5";
+      var appreciateRatePerc2 = parseInt(appreciateRateInput2);
+      var appreciateRate2 = appreciateRatePerc2/100;
+      var appreciateTimeIn2 = parseFloat(document.getElementById("appreciateTime").value);
+      appreciateTimeIn2.type = "number";
+      var appreciateTime2 = parseInt(appreciateTimeIn2);
+      console.log("appreciateRate:"+appreciateRate2);
+      var powRate2 = appreciateRate2 + 1;
+      //console.log("powRate:"+powRate);
+      var powVar2 = Math.pow(powRate2, appreciateTime2);
+      //console.log("powVar:"+powVar);
+      var appreciateResult2 = powVar2 * appreciateInitialVal2;
 
-  var appreciateInitialValInput2 = parseFloat(document.getElementById("appreciateInitialVal").value);
-appreciateInitialValInput2.type = "number";
-var appreciateInitialVal2 = parseInt(appreciateInitialValInput2);
-var appreciateRateInput2 = parseFloat(document.getElementById("appreciateRate").value);
-appreciateRateInput2.type = "number";
-appreciateRateInput2.step = "0.5";
-var appreciateRatePerc2 = parseInt(appreciateRateInput2);
-var appreciateRate2 = appreciateRatePerc2/100;
-var appreciateTimeIn2 = parseFloat(document.getElementById("appreciateTime").value);
-appreciateTimeIn2.type = "number";
-var appreciateTime2 = parseInt(appreciateTimeIn2);
-console.log("appreciateRate:"+appreciateRate2);
-var powRate2 = appreciateRate2 + 1;
-//console.log("powRate:"+powRate);
-var powVar2 = Math.pow(powRate2, appreciateTime2);
-//console.log("powVar:"+powVar);
-var appreciateResult2 = powVar2 * appreciateInitialVal2;
+      var appreciateProfit = appreciateResult2-appreciateInitialVal2 
+      appreciateProfitAnswer.textContent = "Answer: " + appreciateProfit.toFixed(2);
+      appreciateProfitAns.appendChild(appreciateProfitAnswer);
+    }
+    appreciateCalcProfit.addEventListener("click", appreciateProfitCalcClicked);
 
-var appreciateProfit = appreciateResult2-appreciateInitialVal2 
-appreciateProfitAnswer.textContent = "Answer: " + appreciateProfit.toFixed(2);
-appreciateProfitAns.appendChild(appreciateProfitAnswer);
-}
-appreciateCalcProfit.addEventListener("click", appreciateProfitCalcClicked);
+    //depreciation
+    //final value
+    var depreciateCalcVal = document.getElementById("depreciateCalcVal");
+    var depreciateValAns = document.getElementById("depreciateValAns");
+    var depreciateValAnswer = document.createElement("p");
+    var depreciateValCalcClicked = function() {
+    
 
-//depreciation
-//final value
-var depreciateCalcVal = document.getElementById("depreciateCalcVal");
-var depreciateValAns = document.getElementById("depreciateValAns");
-var depreciateValAnswer = document.createElement("p");
-var depreciateValCalcClicked = function() {
-var depreciateInitialValIn = parseFloat(document.getElementById("depreciateInitialVal").value);
-depreciateInitialValIn.type = "number";
-var depreciateInitialVal = parseInt(depreciateInitialValIn);
-console.log("depreciateInitialVal: " + depreciateInitialVal);
-var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
-depreciateRateIn.type = "number";
-var depreciateRatePerc = parseInt(depreciateRateIn);
-var depreciateRate = depreciateRatePerc/100
-var depreciateRateMinus = 1-depreciateRate
-console.log("depreciateRateMinus: " + depreciateRateMinus);
-var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
-depreciateTimeIn.type = "number";
-var depreciateTime = parseInt(depreciateTimeIn);
-console.log("depreciateTime: " + depreciateTime);
-var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
-console.log("depreciationPow: " + depreciationPow);
-var depreciationVal = depreciationPow * depreciateInitialVal
-depreciateValAnswer.textContent = "Answer: " + depreciationVal.toFixed(2);
-depreciateValAns.appendChild(depreciateValAnswer);
+    var depreciateInitialValInput = parseFloat(document.getElementById("depreciateInitialVal").value);
+    depreciateInitialValInput.type = "number";
+    var depreciateInitialVal = parseInt(depreciateInitialValInput);
+    console.log("depreciate initial val In:" + depreciateInitialValInput)
 
-}
-depreciateCalcVal.addEventListener("click", depreciateValCalcClicked);
+    var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
+    console.log("depreciateRateIn:" + depreciateRateIn)
+    depreciateRateIn.type = "number";
+    depreciateRatePerc = parseInt(depreciateRateIn);
+    depreciateRate = depreciateRatePerc/100
+    depreciateRateMinus = 1 - depreciateRate
+
+    var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
+    depreciateTimeIn.type = "number";
+    depreciateTime = parseInt(depreciateTimeIn)
+
+      // var depreciateInitialValIn = parseFloat(document.getElementById("depreciateInitialVal").value);
+      // depreciateInitialValIn.type = "number";
+      // var depreciateInitialVal = parseInt(depreciateInitialValIn);
+      // console.log("depreciateInitialVal: " + depreciateInitialVal);
+      // var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
+      // depreciateRateIn.type = "number";
+      // var depreciateRatePerc = parseInt(depreciateRateIn);
+      // var depreciateRate = depreciateRatePerc/100
+      // var depreciateRateMinus = 1-depreciateRate
+      // console.log("depreciateRateMinus: " + depreciateRateMinus);
+      // var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
+      // depreciateTimeIn.type = "number";
+      // var depreciateTime = parseInt(depreciateTimeIn);
+      console.log("depreciateTime: " + depreciateTime);
+      var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
+      console.log("depreciationPow: " + depreciationPow);
+      var depreciationVal = depreciationPow * depreciateInitialVal
+      var depreciationVal = depreciateTime + depreciateRatePerc + depreciateInitialVal
+      depreciateValAnswer.textContent = "Answer: " + depreciationVal.toFixed(2);
+      depreciateValAns.appendChild(depreciateValAnswer);
+
+    }
+    depreciateCalcVal.addEventListener("click", depreciateValCalcClicked);
 //profit
   </script>
 </body>
