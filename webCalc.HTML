@@ -108,9 +108,9 @@
     var squares = document.getElementById("squaresCalc");
     var squareAnswer = document.createElement("p");
     var squaresCalcClicked = function() {
-      var squareInput = parseFloat(document.getElementById("squareNum").value);
-      squareInput.type = "number";
-      var squareNum = parseInt(squareInput);
+      var squareNum = parseFloat(document.getElementById("squareNum").value);
+      squareNum.type = "number";
+      //var squareNum = parseInt(squareInput);
       var squared = squareNum * squareNum
       squareAnswer.textContent = "Answer: " + squared;
       squareAns.appendChild(squareAnswer);
@@ -127,9 +127,9 @@
     var cubeAns = document.getElementById("cubeAns");
     var cubeAnswer = document.createElement("p");
     var cubeCalcClicked = function() {
-      var cubeInput = parseFloat(document.getElementById("cubeNum").value);
-      cubeInput.type = "number";
-      var cubeNum = parseInt(cubeInput);
+      var cubeNum = parseFloat(document.getElementById("cubeNum").value);
+      cubeNum.type = "number";
+      //var cubeNum = parseInt(cubeInput);
       var cubed = cubeNum * cubeNum * cubeNum
       cubeAnswer.textContent = "Answer: " + cubed;
       cubeAns.appendChild(cubeAnswer);
@@ -137,7 +137,7 @@
       cubeHead.textContent = "How we got this: ";
       cubeAnswer.appendChild(cubeHead);
       var cubeExplain = document.createElement("p");
-      cubeExplain.textContent = "The cube of a number is the number multiplied by itself thrice. So the cube of " + cubeNum + "is = " + cubeNum + " X " + cubeNum + " X " + cubeNum + " which is " + cubed;
+      cubeExplain.textContent = "The cube of a number is the number multiplied by itself thrice. So the cube of " + cubeNum + " is = " + cubeNum + " X " + cubeNum + " X " + cubeNum + " which is " + cubed;
       cubeHead.appendChild(cubeExplain);
   }
     cubeCalc.addEventListener("click", cubeCalcClicked);
@@ -148,10 +148,10 @@
     var changeCalcClicked = function() {
       var initialValInput = parseFloat(document.getElementById("initialVal").value);
       initialValInput.type = "number";
-      var initialVal = parseInt(initialValInput);
+      var initialVal = initialValInput;
       var finalValInput = parseFloat(document.getElementById("finalVal").value);
       finalValInput.type = "number";
-      var finalVal = parseInt(finalValInput);
+      var finalVal = finalValInput;
       var percentChange = ((finalVal-initialVal)/initialVal) * 100;
       changeAnswer.textContent = "Answer: " + percentChange + "%";
       changeAns.appendChild(changeAnswer);
@@ -159,7 +159,7 @@
       changeHead.textContent = "How we got this: ";
       changeAnswer.appendChild(changeHead);
       var changeExplain = document.createElement("p");
-      changeExplain.textContent = "Percentage change is calculated by subtracting the initial value from the final value, and then dividing that by the initial value and multiplying that by 100. Here you would do (" + finalVal + "-" + initialVal + ")/" + initialVal + " X 100";
+      changeExplain.textContent = "Percentage change is calculated by subtracting the initial value from the final value, and then dividing that by the initial value and multiplying that by 100. Here you would do (" + finalVal + " - " + initialVal + ") / " + initialVal + " X 100";
       changeHead.appendChild(changeExplain);
     }
     changeCalc.addEventListener("click", changeCalcClicked);
@@ -170,10 +170,10 @@
     var percentCalcClicked = function() {
       var aValInput = parseFloat(document.getElementById("aValue").value);
       aValInput.type = "number";
-      var aValue = parseInt(aValInput);
+      var aValue = aValInput;
       var percentageOfInput = parseFloat(document.getElementById("percentageOf").value);
       percentageOfInput.type = "number";
-      var percentOf = parseInt(percentageOfInput);
+      var percentOf = percentageOfInput;
       var percentageOf = (percentOf/aValue)*100;
       percentAnswer.textContent = "Answer: " + percentageOf +"%";
       percentAns.appendChild(percentAnswer);
@@ -192,10 +192,10 @@
     var valCalcClicked = function() {
       var percent = parseFloat(document.getElementById("percent").value);
       percent.type = "number";
-      var thePercent = parseInt(percent);
+      var thePercent = percent;
       var theVal = parseFloat(document.getElementById("val").value);
       theVal.type = "number";
-      someVal = parseInt(theVal);
+      someVal = theVal;
       var valAnswer = (percent*someVal)/100;
       answerToVal.textContent = "Answer: " + valAnswer;
       valAns.appendChild(answerToVal);
@@ -216,17 +216,17 @@
 
       var SIInitialValIn = parseFloat(document.getElementById("SIInitialVal").value);
       SIInitialValIn.type = "number";
-      var SIInitialVal = parseInt(SIInitialValIn);
+      var SIInitialVal = SIInitialValIn;
       console.log("Initial value:" + SIInitialVal)
 
       var SIRateIn = parseFloat(document.getElementById("SIRate").value);
       SIRateIn.type = "number";
-      var SIRate = parseInt(SIRateIn);
+      var SIRate = SIRateIn;
 
       //console.log("SI rate:" + SIRate)
       var SITimeIn = parseFloat(document.getElementById("SITime").value);
       SITimeIn.type = "number";
-      var SITime = parseInt(SITimeIn);
+      var SITime = SITimeIn;
       //console.log("SI time:" + SITime)
       var SIProfit = (SIRate * SITime * SIInitialVal)/100;
       var SITotal = SIProfit + SIInitialVal;
@@ -243,15 +243,15 @@
     var appreciateValCalcClicked = function() {
       var appreciateInitialValInput = parseFloat(document.getElementById("appreciateInitialVal").value);
       appreciateInitialValInput.type = "number";
-      var appreciateInitialVal = parseInt(appreciateInitialValInput);
+      var appreciateInitialVal = appreciateInitialValInput;
       var appreciateRateInput = parseFloat(document.getElementById("appreciateRate").value);
       appreciateRateInput.type = "number";
       appreciateRateInput.step = "0.5";
-      var appreciateRatePerc = parseInt(appreciateRateInput);
+      var appreciateRatePerc = appreciateRateInput;
       var appreciateRate = appreciateRatePerc/100;
       var appreciateTimeIn = parseFloat(document.getElementById("appreciateTime").value);
       appreciateTimeIn.type = "number";
-      var appreciateTime = parseInt(appreciateTimeIn);
+      var appreciateTime = appreciateTimeIn;
       console.log("appreciateRate:"+appreciateRate);
       var powRate = appreciateRate + 1;
       //console.log("powRate:"+powRate);
@@ -270,15 +270,15 @@
     var appreciateProfitCalcClicked = function() {
       var appreciateInitialValInput2 = parseFloat(document.getElementById("appreciateInitialVal").value);
       appreciateInitialValInput2.type = "number";
-      var appreciateInitialVal2 = parseInt(appreciateInitialValInput2);
+      var appreciateInitialVal2 = appreciateInitialValInput2;
       var appreciateRateInput2 = parseFloat(document.getElementById("appreciateRate").value);
       appreciateRateInput2.type = "number";
       appreciateRateInput2.step = "0.5";
-      var appreciateRatePerc2 = parseInt(appreciateRateInput2);
+      var appreciateRatePerc2 = appreciateRateInput2;
       var appreciateRate2 = appreciateRatePerc2/100;
       var appreciateTimeIn2 = parseFloat(document.getElementById("appreciateTime").value);
       appreciateTimeIn2.type = "number";
-      var appreciateTime2 = parseInt(appreciateTimeIn2);
+      var appreciateTime2 = appreciateTimeIn2;
       console.log("appreciateRate:"+appreciateRate2);
       var powRate2 = appreciateRate2 + 1;
       //console.log("powRate:"+powRate);
@@ -302,17 +302,17 @@
 
       var depreciateInitialValInput = parseFloat(document.getElementById("depreciateInitialVal").value);
       depreciateInitialValInput.type = "number";
-      var depreciateInitialVal = parseInt(depreciateInitialValInput);
+      var depreciateInitialVal = depreciateInitialValInput;
 
       var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
       depreciateRateIn.type = "number";
-      depreciateRatePerc = parseInt(depreciateRateIn);
+      depreciateRatePerc = depreciateRateIn;
       depreciateRate = depreciateRatePerc/100
       depreciateRateMinus = 1 - depreciateRate
 
       var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
       depreciateTimeIn.type = "number";
-      depreciateTime = parseInt(depreciateTimeIn)
+      depreciateTime = depreciateTimeIn
 
         // var depreciateInitialValIn = parseFloat(document.getElementById("depreciateInitialVal").value);
         // depreciateInitialValIn.type = "number";
@@ -342,17 +342,17 @@
 
       var depreciateInitialValInput = parseFloat(document.getElementById("depreciateInitialVal").value);
       depreciateInitialValInput.type = "number";
-      var depreciateInitialVal = parseInt(depreciateInitialValInput);
+      var depreciateInitialVal = depreciateInitialValInput;
 
       var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
       depreciateRateIn.type = "number";
-      depreciateRatePerc = parseInt(depreciateRateIn);
+      depreciateRatePerc = depreciateRateIn;
       depreciateRate = depreciateRatePerc/100
       depreciateRateMinus = 1 - depreciateRate
 
       var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
       depreciateTimeIn.type = "number";
-      depreciateTime = parseInt(depreciateTimeIn)
+      depreciateTime = depreciateTimeIn
 
       var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
       var depreciationVal = depreciationPow * depreciateInitialVal
