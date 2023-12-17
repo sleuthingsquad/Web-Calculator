@@ -57,27 +57,6 @@
   <label>Time:</label> <input id="SITime">
   <button id="SIValCalc">Calculate</button>
   <span id="SIValAns"></span>
-  <br>
-  <br>
-  <h4> Initial principal</h4>
-  <label>Rate:</label> <input>
-  <label>Time:</label> <input>
-  <label>Amount:</label><input>
-  <button>Calculate</button>
-  <br>
-  <br>
-  <h4>Rate</h4>
-  <label>Initial principal:</label> <input>
-  <label>Amount:</label><input>
-  <label>Time:</label> <input>
-  <button>Calculate</button>
-  <br>
-  <br>
-  <h4>Time</h4>
-  <label>Initial principal:</label> <input>
-  <label>Amount:</label><input>
-  <label>Rate:</label> <input>
-  <button>Calculate</button>
 <br>
 <br>
   <h3>Appreciation/Compound Interest</h3>
@@ -91,14 +70,16 @@
 <br>
 <br>
   <h3>Depreciation</h3>
-  <label id="depreciateInitialVal">Initial value:</label> <input>
-  <label id="depreciateRate">Depreciation rate (as a percentage):</label> <input>
-  <label id="depreciateTime">Years:</label> <input>
+  <label>Initial value:</label> <input id="depreciateInitialVal">
+  <label>Depreciation rate (as a percentage):</label> <input id="depreciateRate">
+  <label>Years:</label> <input id="depreciateTime">
   <button id="depreciateCalcVal">Calculate final value</button>
   <span id="depreciateValAns"></span>
-  <button>Calculate profit</button>
+  <button id="depreciateLossCalc">Calculate loss</button>
+  <span id="depreciateLossAns"></span>
   <script>
 
+    //DMAS
     var DMAScalc = document.getElementById("DMAS");
     var dmasANS = document.getElementById("DMASans")
     var DMASanswer = document.createElement("p");
@@ -108,16 +89,16 @@
       var operator = document.getElementById("operator").value
      
       if (operator === "/") {
-        DMASanswer = num1 / num2
+        DMASanswer.innerHTML = num1 / num2
       }
       else if (operator === "*"){
-        DMASanswer = num1 * num2
+        DMASanswer.innerHTML = num1 * num2
       }
       else if (operator === "+") {
-        DMASanswer = num1 + num2
+        DMASanswer.innerHTML = num1 + num2
       }
       else {
-        DMASanswer = num1 - num2
+        DMASanswer.innerHTML = num1 - num2
       }
       dmasANS.appendChild(DMASanswer)
     }
@@ -313,45 +294,69 @@
     var depreciateValCalcClicked = function() {
     
 
-    var depreciateInitialValInput = parseFloat(document.getElementById("depreciateInitialVal").value);
-    depreciateInitialValInput.type = "number";
-    var depreciateInitialVal = parseInt(depreciateInitialValInput);
-    console.log("depreciate initial val In:" + depreciateInitialValInput)
+      var depreciateInitialValInput = parseFloat(document.getElementById("depreciateInitialVal").value);
+      depreciateInitialValInput.type = "number";
+      var depreciateInitialVal = parseInt(depreciateInitialValInput);
 
-    var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
-    console.log("depreciateRateIn:" + depreciateRateIn)
-    depreciateRateIn.type = "number";
-    depreciateRatePerc = parseInt(depreciateRateIn);
-    depreciateRate = depreciateRatePerc/100
-    depreciateRateMinus = 1 - depreciateRate
+      var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
+      depreciateRateIn.type = "number";
+      depreciateRatePerc = parseInt(depreciateRateIn);
+      depreciateRate = depreciateRatePerc/100
+      depreciateRateMinus = 1 - depreciateRate
 
-    var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
-    depreciateTimeIn.type = "number";
-    depreciateTime = parseInt(depreciateTimeIn)
+      var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
+      depreciateTimeIn.type = "number";
+      depreciateTime = parseInt(depreciateTimeIn)
 
-      // var depreciateInitialValIn = parseFloat(document.getElementById("depreciateInitialVal").value);
-      // depreciateInitialValIn.type = "number";
-      // var depreciateInitialVal = parseInt(depreciateInitialValIn);
-      // console.log("depreciateInitialVal: " + depreciateInitialVal);
-      // var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
-      // depreciateRateIn.type = "number";
-      // var depreciateRatePerc = parseInt(depreciateRateIn);
-      // var depreciateRate = depreciateRatePerc/100
-      // var depreciateRateMinus = 1-depreciateRate
-      // console.log("depreciateRateMinus: " + depreciateRateMinus);
-      // var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
-      // depreciateTimeIn.type = "number";
-      // var depreciateTime = parseInt(depreciateTimeIn);
-      console.log("depreciateTime: " + depreciateTime);
-      var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
-      console.log("depreciationPow: " + depreciationPow);
-      var depreciationVal = depreciationPow * depreciateInitialVal
-      var depreciationVal = depreciateTime + depreciateRatePerc + depreciateInitialVal
-      depreciateValAnswer.textContent = "Answer: " + depreciationVal.toFixed(2);
-      depreciateValAns.appendChild(depreciateValAnswer);
+        // var depreciateInitialValIn = parseFloat(document.getElementById("depreciateInitialVal").value);
+        // depreciateInitialValIn.type = "number";
+        // var depreciateInitialVal = parseInt(depreciateInitialValIn);
+        // console.log("depreciateInitialVal: " + depreciateInitialVal);
+        // var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
+        // depreciateRateIn.type = "number";
+        // var depreciateRatePerc = parseInt(depreciateRateIn);
+        // var depreciateRate = depreciateRatePerc/100
+        // var depreciateRateMinus = 1-depreciateRate
+        // console.log("depreciateRateMinus: " + depreciateRateMinus);
+        // var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
+        // depreciateTimeIn.type = "number";
+        // var depreciateTime = parseInt(depreciateTimeIn);
+        var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
+        var depreciationVal = depreciationPow * depreciateInitialVal
+        depreciateValAnswer.textContent = "Value after " + depreciateTime + " years: " + depreciationVal.toFixed(2);
+        depreciateValAns.appendChild(depreciateValAnswer);
 
     }
     depreciateCalcVal.addEventListener("click", depreciateValCalcClicked);
+
+    var depreciateLossCalc = document.getElementById("depreciateLossCalc")
+    var depreciateLossAns = document.getElementById("depreciateLossAns")
+    var depreciateLossAnswer = document.createElement("p")
+    var depreciateLossCalcClicked = function() {
+
+      var depreciateInitialValInput = parseFloat(document.getElementById("depreciateInitialVal").value);
+      depreciateInitialValInput.type = "number";
+      var depreciateInitialVal = parseInt(depreciateInitialValInput);
+
+      var depreciateRateIn = parseFloat(document.getElementById("depreciateRate").value);
+      depreciateRateIn.type = "number";
+      depreciateRatePerc = parseInt(depreciateRateIn);
+      depreciateRate = depreciateRatePerc/100
+      depreciateRateMinus = 1 - depreciateRate
+
+      var depreciateTimeIn = parseFloat(document.getElementById("depreciateTime").value);
+      depreciateTimeIn.type = "number";
+      depreciateTime = parseInt(depreciateTimeIn)
+
+      var depreciationPow = Math.pow(depreciateRateMinus, depreciateTime);
+      var depreciationVal = depreciationPow * depreciateInitialVal
+
+      var totalLoss = depreciateInitialVal - depreciationVal
+
+      depreciateLossAnswer.textContent = "Loss after " + depreciateTime + " years: " + totalLoss.toFixed(2)
+      depreciateLossAns.appendChild(depreciateLossAnswer)
+    }
+    depreciateLossCalc.addEventListener("click", depreciateLossCalcClicked)
 //profit
   </script>
 </body>
