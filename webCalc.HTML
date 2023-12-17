@@ -213,18 +213,24 @@
     var SIValAns = document.getElementById("SIValAns");
     var SIVAlAnswer = document.createElement("p");
     var SIVAlCalcClicked = function() {
+
       var SIInitialValIn = parseFloat(document.getElementById("SIInitialVal").value);
       SIInitialValIn.type = "number";
-      var SIInitialVal = parseInt(SIInitialVal);
+      var SIInitialVal = parseInt(SIInitialValIn);
+      console.log("Initial value:" + SIInitialVal)
+
       var SIRateIn = parseFloat(document.getElementById("SIRate").value);
       SIRateIn.type = "number";
       var SIRate = parseInt(SIRateIn);
+
+      //console.log("SI rate:" + SIRate)
       var SITimeIn = parseFloat(document.getElementById("SITime").value);
       SITimeIn.type = "number";
       var SITime = parseInt(SITimeIn);
+      //console.log("SI time:" + SITime)
       var SIProfit = (SIRate * SITime * SIInitialVal)/100;
       var SITotal = SIProfit + SIInitialVal;
-      SIVAlAnswer.textContent = "Answer: " + SITotal.toFixed(2);
+      SIVAlAnswer.textContent = "Final Amount: " + SITotal.toFixed(2) + ". " + "The profit is: " + SIProfit.toFixed(2);
       SIValAns.appendChild(SIVAlAnswer);
     };
     SIValCalc.addEventListener("click", SIVAlCalcClicked);
